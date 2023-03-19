@@ -6,7 +6,7 @@
 
     <groupId>main.artfix</groupId>
     <artifactId>Coft</artifactId>
-    <version>3.4</version>
+    <version>3.5</version>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
