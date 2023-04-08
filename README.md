@@ -10,4 +10,4 @@ Coft-3.5 is already available.
 
 Thank you for using Coft.
 
-Support project https://ko-fi.com/artfixprog
+Support project https://ko-fi.com/arthurstep
