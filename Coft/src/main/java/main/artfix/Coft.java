@@ -12,12 +12,17 @@ public class Coft {
                     "░█─── ░█──░█ ░█▀▀▀ ─░█── \n" +
                     "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──");
             System.out.println();
+            System.out.println();
+            System.out.println();
             banner = true;
         }
     }
 
 
+    public static String testMeCodeString;
+    public static int testMeCodeInt;
     public static Scanner scanner = new Scanner(System.in);
+
 
     public static String intToString(int yourInt) {
         Coft.showBanner();
@@ -41,6 +46,11 @@ public class Coft {
         boolean isEqualsStringResult;
         isEqualsStringResult = word1.equals(word2);
         return isEqualsStringResult;
+    }
+
+    public static void OFFBANNER() {
+        Coft.banner = true;
+        Coft.showBanner();
     }
 
 }
