@@ -7,6 +7,8 @@ Coft-3.5 is already available.
 * Optimised code.
 * Works on any platform
 * Available Open-Source and Jar.
+* String, Int, Scanner - For testing.
+* Off Coft banner when start.
 
 Thank you for using Coft.
 
