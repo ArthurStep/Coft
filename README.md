@@ -12,4 +12,6 @@ Coft-3.5 is already available.
 
 Thank you for using Coft.
 
-Support project https://ko-fi.com/arthurstep
+Project by Arthur Stepanyan: https://github.com/ArthurStep.
+
+Support project: https://ko-fi.com/arthurstep.
