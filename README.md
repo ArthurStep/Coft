@@ -2,13 +2,12 @@
 Coft is a library for java easy coding and fast codding.
 
 
-Coft-3.7 is already available.
-* Create your variable and don't use other.
-* Optimised code.
-* Available Open-Source and Jar.
+Coft-3.8 is already available.
 * Professional logging tools.
-* Off Coft banner when start.
-* Coft run command for run when starts program not on working time.
+* Professional encrypt and decrypt tools.
+* Available Open-Source and Jar.
+* Optimised code.
+* Version on logo.
 
 Thank you for using Coft.
 
