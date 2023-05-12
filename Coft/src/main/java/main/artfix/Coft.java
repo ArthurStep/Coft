@@ -1,6 +1,10 @@
 package main.artfix;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class Coft {
     private static boolean banner = false;
@@ -31,7 +35,8 @@ public class Coft {
             System.out.println("\n" +
                     "░█▀▀█ ░█▀▀▀█ ░█▀▀▀ ▀▀█▀▀ \n" +
                     "░█─── ░█──░█ ░█▀▀▀ ─░█── \n" +
-                    "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──");
+                    "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──" +
+                    "(V3.8)");
             System.out.println();
             System.out.println();
             banner = true;
@@ -40,24 +45,24 @@ public class Coft {
 
 
     public static String intToString(int yourInt) {
-        NewCommandStarted("INT TO STRING FUNCTION USED");
+        NewCommandStarted("INT TO STRING USED");
         return Integer.toString(yourInt);
     }
 
     public static int stringToInt(String yourString) {
-        NewCommandStarted("STRING TO INT FUNCTION USED");
+        NewCommandStarted("STRING TO INT USED");
         return Integer.parseInt(yourString);
     }
 
     public static boolean isEqualsInt(int num1, int num2) {
-        NewCommandStarted("IS EQUALS OR NO FUNCTION USED FOR INT");
+        NewCommandStarted("IS EQUALS OR NO FOR INT");
         boolean isEqualsIntResult;
         isEqualsIntResult = num1 == num2;
         return isEqualsIntResult;
     }
 
     public static boolean isEqualsString(String word1, String word2) {
-        NewCommandStarted("IS EQUALS OR NO FUNCTION USED FOR STRING");
+        NewCommandStarted("IS EQUALS OR NO FOR STRING");
         boolean isEqualsStringResult;
         isEqualsStringResult = word1.equals(word2);
         return isEqualsStringResult;
@@ -65,6 +70,64 @@ public class Coft {
 
     public static void OFFBANNER() {
         Coft.banner = true;
+    }
+
+    public static class security {
+        private static String CoftEncryptKey = "nokey";
+
+        public static String encrypt(String text) {
+            NewCommandStarted("ENCRYPT REQUESTED");
+            if (!CoftEncryptKey.equals("nokey")) {
+                try {
+                    byte[] keyBytes = CoftEncryptKey.getBytes();
+                    SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, "AES");
+                    Cipher cipher = Cipher.getInstance("AES");
+                    cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+                    byte[] encryptedBytes = cipher.doFinal(text.getBytes());
+                    return Base64.getEncoder().encodeToString(encryptedBytes);
+                } catch (InvalidKeyException ie) {
+                    System.err.println("Coft >> Error! ENCRYPT --> Key size should be 16 or 32 symbols!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.err.println("Coft >> Error! ENCRYPT");
+
+                }
+            } else {
+                System.err.println("Coft >> Error! Set Key.");
+                text = "Coft >> Error! Set Key.";
+            }
+            return text;
+        }
+
+        public static String decrypt(String text) {
+            NewCommandStarted("DECRYPT REQUESTED");
+            if (!CoftEncryptKey.equals("nokey")) {
+                try {
+                    byte[] keyBytes = CoftEncryptKey.getBytes();
+                    SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, "AES");
+                    Cipher cipher = Cipher.getInstance("AES");
+                    cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
+                    byte[] encryptedBytes = Base64.getDecoder().decode(text);
+                    byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
+                    return new String(decryptedBytes);
+                } catch (InvalidKeyException ie) {
+                    System.err.println("Coft >> Error! DECRYPT --> Key size should be 16 or 32 symbols!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.err.println("Coft >> Error! DECRYPT");
+
+                }
+            } else {
+                System.err.println("Coft >> Error! Set Key.");
+                text = "Coft >> Error! Set Key.";
+            }
+            return text;
+        }
+
+        public static void setEncryptDecryptKEY(String key) {
+            NewCommandStarted("COFT KEY SET");
+            CoftEncryptKey = key;
+        }
     }
 
     public static class logging {
