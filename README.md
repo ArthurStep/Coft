@@ -6,6 +6,7 @@ Coft-3.8 is already available.
 * Professional logging tools.
 * Professional encrypt and decrypt tools.
 * Available Open-Source and Jar.
+* Coft stop command.
 * Optimised code.
 * Version on logo.
 
