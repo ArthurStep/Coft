@@ -36,7 +36,7 @@ public class Coft {
                     "░█▀▀█ ░█▀▀▀█ ░█▀▀▀ ▀▀█▀▀ \n" +
                     "░█─── ░█──░█ ░█▀▀▀ ─░█── \n" +
                     "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──" +
-                    "(V3.8)");
+                    "(V3.8.1)");
             System.out.println();
             System.out.println();
             banner = true;
@@ -66,6 +66,11 @@ public class Coft {
         boolean isEqualsStringResult;
         isEqualsStringResult = word1.equals(word2);
         return isEqualsStringResult;
+    }
+
+    public static void stop(){
+        NewCommandStarted("COFT STOPPED");
+        CoftActive = false;
     }
 
     public static void OFFBANNER() {
