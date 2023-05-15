@@ -5,6 +5,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Random;
 
 public class Coft {
     private static boolean banner = false;
@@ -36,7 +37,7 @@ public class Coft {
                     "░█▀▀█ ░█▀▀▀█ ░█▀▀▀ ▀▀█▀▀ \n" +
                     "░█─── ░█──░█ ░█▀▀▀ ─░█── \n" +
                     "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──" +
-                    "(V3.8.1)");
+                    "(V3.8.2)");
             System.out.println();
             System.out.println();
             banner = true;
@@ -68,7 +69,7 @@ public class Coft {
         return isEqualsStringResult;
     }
 
-    public static void stop(){
+    public static void stop() {
         NewCommandStarted("COFT STOPPED");
         CoftActive = false;
     }
@@ -168,5 +169,32 @@ public class Coft {
         }
     }
 
+    public static class generator {
+        public static String numberGenerator(int length) {
+            NewCommandStarted("NUMBER GENERATOR REQUEST");
+            StringBuilder codeBuilder = new StringBuilder();
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++) {
+                int randomDigit = random.nextInt(10); // Generate a random digit (0-9)
+                codeBuilder.append(randomDigit);
+            }
+
+            return codeBuilder.toString();
+        }
+
+        public static String letterGenerator(int length) {
+            NewCommandStarted("LETTER GENERATOR REQUEST");
+            StringBuilder codeBuilder = new StringBuilder();
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++) {
+                char randomChar = (char) (random.nextInt(26) + 'A'); // Generate a random uppercase letter
+                codeBuilder.append(randomChar);
+            }
+
+            return codeBuilder.toString();
+        }
+    }
 }
 
