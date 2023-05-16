@@ -18,10 +18,19 @@ public class Coft {
         CoftActive = true;
     }
 
+    public static void stop() {
+        NewCommandStarted("COFT STOPPED");
+        CoftActive = false;
+    }
+
+    public static void OFFBANNER() {
+        Coft.banner = true;
+    }
+
     private static void NewCommandStarted(String logData) {
         if (CoftActive) {
             if (loggingSwitch) {
-                logging.log("CoftSYS: " + logData);
+                logging.logSave("CoftSYS: " + logData);
             }
         } else {
             System.out.println("!!! RUN COFT !!!");
@@ -37,45 +46,23 @@ public class Coft {
                     "░█▀▀█ ░█▀▀▀█ ░█▀▀▀ ▀▀█▀▀ \n" +
                     "░█─── ░█──░█ ░█▀▀▀ ─░█── \n" +
                     "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──" +
-                    "(V3.8.2)");
+                    "(V3.8.3)");
             System.out.println();
             System.out.println();
             banner = true;
         }
     }
 
+    public static class convert {
+        public static String intToString(int yourInt) {
+            NewCommandStarted("INT TO STRING USED");
+            return Integer.toString(yourInt);
+        }
 
-    public static String intToString(int yourInt) {
-        NewCommandStarted("INT TO STRING USED");
-        return Integer.toString(yourInt);
-    }
-
-    public static int stringToInt(String yourString) {
-        NewCommandStarted("STRING TO INT USED");
-        return Integer.parseInt(yourString);
-    }
-
-    public static boolean isEqualsInt(int num1, int num2) {
-        NewCommandStarted("IS EQUALS OR NO FOR INT");
-        boolean isEqualsIntResult;
-        isEqualsIntResult = num1 == num2;
-        return isEqualsIntResult;
-    }
-
-    public static boolean isEqualsString(String word1, String word2) {
-        NewCommandStarted("IS EQUALS OR NO FOR STRING");
-        boolean isEqualsStringResult;
-        isEqualsStringResult = word1.equals(word2);
-        return isEqualsStringResult;
-    }
-
-    public static void stop() {
-        NewCommandStarted("COFT STOPPED");
-        CoftActive = false;
-    }
-
-    public static void OFFBANNER() {
-        Coft.banner = true;
+        public static int stringToInt(String yourString) {
+            NewCommandStarted("STRING TO INT USED");
+            return Integer.parseInt(yourString);
+        }
     }
 
     public static class security {
@@ -137,13 +124,18 @@ public class Coft {
     }
 
     public static class logging {
-        public static void log(String log) {
+        public static void logSave(String logSave) {
             if (loggingSwitch) {
-                CoftLogs.add(log);
+                CoftLogs.add(logSave);
             } else {
                 System.err.println("Turn on logging by 'logging.StartLogging();'.");
                 NewCommandStarted("LOG REQUESTED DECLINED | LOGGING TURNED OFF");
             }
+        }
+
+        public static void log(String log) {
+            NewCommandStarted("NOW TIME LOGGING USED");
+            System.err.println(log);
         }
 
         public static void PrintLogged() {
