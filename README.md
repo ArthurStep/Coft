@@ -7,7 +7,6 @@ Coft-3.8.2 is already available.
 * Generation tool.
 * Professional encrypt and decrypt tools.
 * Available Open-Source and Jar.
-* Coft stop command.
 * Optimised code.
 * Version on logo.
 
