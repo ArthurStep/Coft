@@ -8,59 +8,48 @@ import java.util.Base64;
 import java.util.Random;
 
 public class Coft {
-    private static boolean banner = false;
+    private static boolean bannerSwitch = false;
     private static boolean loggingSwitch = false;
 
-    private static boolean CoftActive = false;
+    private static boolean CoftActiveSwitch = false;
+    private static final String appVersion = "(V3.8.4)";
 
     public static void run() {
-        showBanner();
-        CoftActive = true;
-    }
-
-    public static void stop() {
-        NewCommandStarted("COFT STOPPED");
-        CoftActive = false;
+        if (!bannerSwitch) {
+            System.out.println("\n" +
+                    "░█▀▀█ ░█▀▀▀█ ░█▀▀▀ ▀▀█▀▀ \n" +
+                    "░█─── ░█──░█ ░█▀▀▀ ─░█── \n" +
+                    "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──" +
+                    appVersion);
+            System.out.println();
+            System.out.println();
+            bannerSwitch = true;
+        }
+        CoftActiveSwitch = true;
     }
 
     public static void OFFBANNER() {
-        Coft.banner = true;
+        Coft.bannerSwitch = true;
     }
 
-    private static void NewCommandStarted(String logData) {
-        if (CoftActive) {
-            if (loggingSwitch) {
-                logging.logSave("CoftSYS: " + logData);
-            }
-        } else {
-            System.out.println("!!! RUN COFT !!!");
+    private static void NewCommandStarted() {
+        if (!CoftActiveSwitch) {
+            System.err.println("!!! RUN COFT !!!");
             System.exit(0);
         }
     }
 
     private static ArrayList<String> CoftLogs = new ArrayList<>();
 
-    private static void showBanner() {
-        if (!banner) {
-            System.out.println("\n" +
-                    "░█▀▀█ ░█▀▀▀█ ░█▀▀▀ ▀▀█▀▀ \n" +
-                    "░█─── ░█──░█ ░█▀▀▀ ─░█── \n" +
-                    "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──" +
-                    "(V3.8.3)");
-            System.out.println();
-            System.out.println();
-            banner = true;
-        }
-    }
 
     public static class convert {
         public static String intToString(int yourInt) {
-            NewCommandStarted("INT TO STRING USED");
+            NewCommandStarted();
             return Integer.toString(yourInt);
         }
 
         public static int stringToInt(String yourString) {
-            NewCommandStarted("STRING TO INT USED");
+            NewCommandStarted();
             return Integer.parseInt(yourString);
         }
     }
@@ -69,7 +58,7 @@ public class Coft {
         private static String CoftEncryptKey = "nokey";
 
         public static String encrypt(String text) {
-            NewCommandStarted("ENCRYPT REQUESTED");
+            NewCommandStarted();
             if (!CoftEncryptKey.equals("nokey")) {
                 try {
                     byte[] keyBytes = CoftEncryptKey.getBytes();
@@ -93,7 +82,7 @@ public class Coft {
         }
 
         public static String decrypt(String text) {
-            NewCommandStarted("DECRYPT REQUESTED");
+            NewCommandStarted();
             if (!CoftEncryptKey.equals("nokey")) {
                 try {
                     byte[] keyBytes = CoftEncryptKey.getBytes();
@@ -118,7 +107,7 @@ public class Coft {
         }
 
         public static void setEncryptDecryptKEY(String key) {
-            NewCommandStarted("COFT KEY SET");
+            NewCommandStarted();
             CoftEncryptKey = key;
         }
     }
@@ -129,46 +118,46 @@ public class Coft {
                 CoftLogs.add(logSave);
             } else {
                 System.err.println("Turn on logging by 'logging.StartLogging();'.");
-                NewCommandStarted("LOG REQUESTED DECLINED | LOGGING TURNED OFF");
+                NewCommandStarted();
             }
         }
 
         public static void log(String log) {
-            NewCommandStarted("NOW TIME LOGGING USED");
+            NewCommandStarted();
             System.err.println(log);
         }
 
-        public static void PrintLogged() {
-            NewCommandStarted("LOGGED DATA PRINTED");
+        public static void printLogged() {
+            NewCommandStarted();
             if (loggingSwitch) {
                 for (String log : CoftLogs) {
                     System.err.println(log);
                 }
             } else {
-                NewCommandStarted("PRINTLOGGED REQUESTED DECLINED | LOGGING TURNED OFF");
+                NewCommandStarted();
                 System.err.println("Turn on logging by 'logging.StartLogging();'.");
             }
         }
 
-        public static void StopLogging() {
-            NewCommandStarted("LOGGING TURNED OFF");
+        public static void stopLogging() {
+            NewCommandStarted();
             loggingSwitch = false;
         }
 
-        public static void StartLogging() {
-            NewCommandStarted("LOGGING TURNED ON");
+        public static void startLogging() {
+            NewCommandStarted();
             loggingSwitch = true;
         }
     }
 
     public static class generator {
         public static String numberGenerator(int length) {
-            NewCommandStarted("NUMBER GENERATOR REQUEST");
+            NewCommandStarted();
             StringBuilder codeBuilder = new StringBuilder();
             Random random = new Random();
 
             for (int i = 0; i < length; i++) {
-                int randomDigit = random.nextInt(10); // Generate a random digit (0-9)
+                int randomDigit = random.nextInt(10);
                 codeBuilder.append(randomDigit);
             }
 
@@ -176,16 +165,28 @@ public class Coft {
         }
 
         public static String letterGenerator(int length) {
-            NewCommandStarted("LETTER GENERATOR REQUEST");
+            NewCommandStarted();
             StringBuilder codeBuilder = new StringBuilder();
             Random random = new Random();
 
             for (int i = 0; i < length; i++) {
-                char randomChar = (char) (random.nextInt(26) + 'A'); // Generate a random uppercase letter
+                char randomChar = (char) (random.nextInt(26) + 'A');
                 codeBuilder.append(randomChar);
             }
 
             return codeBuilder.toString();
+        }
+    }
+
+    public static class tools {
+        public static void clear(int lines) {
+            NewCommandStarted();
+            if (lines == 0) {
+                lines = 85;
+            }
+            for (int i = 0; i < lines; i++) {
+                System.out.println(" ");
+            }
         }
     }
 }
