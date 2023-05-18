@@ -2,7 +2,7 @@
 Coft is a library for java easy coding and fast codding.
 
 
-Coft-3.8.2 is already available.
+Coft-3.8.4 is already available.
 * Professional logging tools.
 * Generation tool.
 * Professional encrypt and decrypt tools.
