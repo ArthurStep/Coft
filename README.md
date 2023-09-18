@@ -13,5 +13,3 @@ Coft-3.8.4 is already available.
 Thank you for using Coft.
 
 Project by Arthur Stepanyan: https://github.com/ArthurStep.
-
-Support project: https://ko-fi.com/arthurstep.
