@@ -12,14 +12,14 @@ public class Coft {
     private static boolean loggingSwitch = false;
 
     private static boolean CoftActiveSwitch = false;
-    private static final String appVersion = "(V3.8.4)";
+    private static final String appVersion = "V3.9.5";
 
     public static void run() {
         if (!bannerSwitch) {
             System.out.println("\n" +
                     "░█▀▀█ ░█▀▀▀█ ░█▀▀▀ ▀▀█▀▀ \n" +
                     "░█─── ░█──░█ ░█▀▀▀ ─░█── \n" +
-                    "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──" +
+                    "░█▄▄█ ░█▄▄▄█ ░█─── ─░█──\n                 " +
                     appVersion);
             System.out.println();
             System.out.println();
@@ -34,7 +34,7 @@ public class Coft {
 
     private static void NewCommandStarted() {
         if (!CoftActiveSwitch) {
-            System.err.println("!!! RUN COFT !!!");
+            System.err.println("Coft --> !!! RUN COFT !!!");
             System.exit(0);
         }
     }
@@ -68,15 +68,15 @@ public class Coft {
                     byte[] encryptedBytes = cipher.doFinal(text.getBytes());
                     return Base64.getEncoder().encodeToString(encryptedBytes);
                 } catch (InvalidKeyException ie) {
-                    System.err.println("Coft >> Error! ENCRYPT --> Key size should be 16 or 32 symbols!");
+                    System.err.println("CoftError --> ENCRYPT --> Key size should be 16 or 32 symbols!");
                 } catch (Exception e) {
                     e.printStackTrace();
-                    System.err.println("Coft >> Error! ENCRYPT");
+                    System.err.println("CoftError --> ENCRYPT");
 
                 }
             } else {
-                System.err.println("Coft >> Error! Set Key.");
-                text = "Coft >> Error! Set Key.";
+                System.err.println("CoftError --> Set Key.");
+                text = "CoftError --> Set Key.";
             }
             return text;
         }
@@ -93,15 +93,15 @@ public class Coft {
                     byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
                     return new String(decryptedBytes);
                 } catch (InvalidKeyException ie) {
-                    System.err.println("Coft >> Error! DECRYPT --> Key size should be 16 or 32 symbols!");
+                    System.err.println("CoftError --> DECRYPT --> Key size should be 16 or 32 symbols!");
                 } catch (Exception e) {
                     e.printStackTrace();
-                    System.err.println("Coft >> Error! DECRYPT");
+                    System.err.println("CoftError --> DECRYPT");
 
                 }
             } else {
-                System.err.println("Coft >> Error! Set Key.");
-                text = "Coft >> Error! Set Key.";
+                System.err.println("CoftError --> Error! Set Key.");
+                text = "CoftError --> Set Key.";
             }
             return text;
         }
@@ -113,29 +113,24 @@ public class Coft {
     }
 
     public static class logging {
-        public static void logSave(String logSave) {
+        public static void log(String log) {
             if (loggingSwitch) {
-                CoftLogs.add(logSave);
+                CoftLogs.add(log);
             } else {
-                System.err.println("Turn on logging by 'logging.StartLogging();'.");
+                System.err.println("Coft --> !!! Turn on Logging !!!");
                 NewCommandStarted();
             }
-        }
-
-        public static void log(String log) {
-            NewCommandStarted();
-            System.err.println(log);
         }
 
         public static void printLogged() {
             NewCommandStarted();
             if (loggingSwitch) {
                 for (String log : CoftLogs) {
-                    System.err.println(log);
+                    System.err.println("CoftUserLog --> " + log);
                 }
             } else {
                 NewCommandStarted();
-                System.err.println("Turn on logging by 'logging.StartLogging();'.");
+                System.err.println("Coft --> !!! Turn on Logging !!!");
             }
         }
 
@@ -147,6 +142,23 @@ public class Coft {
         public static void startLogging() {
             NewCommandStarted();
             loggingSwitch = true;
+        }
+    }
+
+    public static class tools {
+        public static void crash() {
+            NewCommandStarted();
+            System.exit(0);
+        }
+
+        public static void fillEmptyLines(int linesCount) {
+            NewCommandStarted();
+            if (linesCount == 0) {
+                linesCount = 85;
+            }
+            for (int i = 0; i < linesCount; i++) {
+                System.out.println(" ");
+            }
         }
     }
 
@@ -175,18 +187,6 @@ public class Coft {
             }
 
             return codeBuilder.toString();
-        }
-    }
-
-    public static class tools {
-        public static void clear(int lines) {
-            NewCommandStarted();
-            if (lines == 0) {
-                lines = 85;
-            }
-            for (int i = 0; i < lines; i++) {
-                System.out.println(" ");
-            }
         }
     }
 }
