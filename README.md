@@ -1,5 +1,5 @@
 # Coft
-Coft is a library for java easy coding and fast codding.
+Coft is a library for java easy and fast codding.
 
 
 Coft-3.9.5 is already available.
