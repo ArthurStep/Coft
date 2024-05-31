@@ -11,6 +11,7 @@ Coft-3.9.5 is already available.
 * Version on logo.
 * Line clear tool.
 * App stop tool.
+* etc.
 
 Thank you for using Coft.
 
