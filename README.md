@@ -1,4 +1,4 @@
-# Coft
+# Coft💣
 Coft is a library for java easy and fast codding.
 
 # Features
